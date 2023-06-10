@@ -21,7 +21,7 @@ class UnstructuredPaddlePDFLoader():
 
     def pdf_txt(self, filepath):
         """Convert pdf to txt file."""
-        reader = PdfReader(self.file_path)
+        reader = PdfReader(filepath)
         raw_text = ''
         for i, page in enumerate(reader.pages):
             text = page.extract_text()
