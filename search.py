@@ -12,22 +12,23 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
+from configs.model_config import embedding_model_dict
 
-from loader.pdf_loader import UnstructuredPaddlePDFLoader
+from loader.txt_loader import UnstructuredTxtLoader
 
-model_name = "roberta-large-nli-stsb-mean-tokens"
-model_kwargs = {'device': 'cuda'}
-embeddings = HuggingFaceEmbeddings(model_name=model_name, model_kwargs=model_kwargs)
+model_name = embedding_model_dict['text2vec-base']
+model_kwargs = {'device': 'cpu'}
+embeddings = HuggingFaceEmbeddings(model_name=model_name,
+                                   model_kwargs=model_kwargs)
 
-loader = UnstructuredPaddlePDFLoader()
-texts = loader.pdf_txt("java-interview.pdf")
+loader = UnstructuredTxtLoader()
+texts = loader.pdf_txt("data/suzhou.txt")
 # embeddings = OpenAIEmbeddings()
-# embeddings = HuggingFaceEmbeddings()
 
-docsearch = FAISS.from_texts(texts, embeddings)
+doc_search = FAISS.from_texts(texts, embeddings)
 chain = load_qa_chain(OpenAI(), chain_type="stuff")
-query = "Java的特性"
-docs = docsearch.similarity_search(query)
+query = "苏州有哪些好玩的地方"
+docs = doc_search.similarity_search(query)
 answer = chain.run(input_documents=docs, question=query)
 print(answer)
 print(docs)
