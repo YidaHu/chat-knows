@@ -6,3 +6,5 @@ embedding_model_dict = {
     "m3e-small": "moka-ai/m3e-small",
     "m3e-base": "moka-ai/m3e-base",
 }
+
+vector_store_path = "data/vector_store"

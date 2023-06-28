@@ -8,11 +8,10 @@
 @Desc    :   None
 """
 from langchain import FAISS
-from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
-from configs.model_config import embedding_model_dict
+from configs.model_config import embedding_model_dict, vector_store_path
 from loader.txt_loader import UnstructuredTxtLoader
 from fastapi import FastAPI, UploadFile, File
 from pathlib import Path
@@ -22,7 +21,6 @@ model_kwargs = {'device': 'cpu'}
 embeddings = HuggingFaceEmbeddings(model_name=model_name,
                                    model_kwargs=model_kwargs)
 loader = UnstructuredTxtLoader()
-
 app = FastAPI()
 
 
@@ -40,7 +38,16 @@ async def upload_file(file: UploadFile = File(...)):
 
     # 从data目录下读取文件
     texts = loader.pdf_txt(file_path)
-
+    vector_store = FAISS.from_documents(texts, embeddings)
+    vector_store.save(vector_store_path)
     # 这里file_contents变量包含了文件的内容，你可以进一步处理或存储它
-
     return {"filename": file.filename, "content_length": len(texts)}
+
+
+@app.post("/query/")
+async def query(query: str):
+    vector_store = FAISS.load(vector_store_path)
+    chain = load_qa_chain(OpenAI(), chain_type="stuff")
+    docs = vector_store.similarity_search(query)
+    answer = chain.run(input_documents=docs, question=query)
+    return {"answer": answer, "documents": docs}
