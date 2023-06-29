@@ -44,7 +44,6 @@ git clone https://github.com/YidaHu/chat-knows.git
 ```shell
 uvicorn api:app --reload
 ```
-```
 
 ## 💡贡献
 欢迎贡献代码、报告问题以及提供改进建议！如果你想贡献代码，请先阅读贡献指南，并提交 Pull Request。如果你发现了问题或有任何建议，请提交 Issue。
