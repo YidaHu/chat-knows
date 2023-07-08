@@ -1,6 +1,6 @@
 # chat-knows
 
-EN | [中文文档](README.md)
+EN | [中文文档](README.zh.md)
 
 Chat-Knows is an intelligent question-answering service based on a local knowledge base. It leverages document vectorization and vector search techniques to provide accurate answers to questions and reference relevant documents.
 
