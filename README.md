@@ -1,52 +1,52 @@
-# chat-knows（知聊）
+# chat-knows
 
-中文 | [EN](README.en.md)
+EN | [中文文档](README.md)
 
-Chat-Knows 是一个基于本地知识库实现智能问答服务，它利用文档向量化和向量搜索的技术，为ChatGPT提供有关问题的回答并提供相关的参考文档。
+Chat-Knows is an intelligent question-answering service based on a local knowledge base. It leverages document vectorization and vector search techniques to provide accurate answers to questions and reference relevant documents.
 
-## 📒介绍
+## 📒Introduction
 
-Chat-Knows 旨在将非结构化文档集合中的知识和信息与 ChatGPT 智能聊天模型相结合，以提供更准确和相关的回答。系统的工作流程如下：
+Chat-Knows combines knowledge and information from unstructured document collections with the ChatGPT conversational model to deliver more accurate and relevant responses. The system workflow is as follows:
 
-- 允许您使用GPT功能与上传的PDF、Word等文件聊天
-- 该应用程序智能地将文档分成更小的块，并采用强大的深度平均网络编码器来生成embedding
-- 首先对上传文件内容执行语义搜索，并将最相关的嵌入传递给LLM
-- 生成精确的响应，返回的响应中引用信息所在的来源，这增加了响应的可信度，并有助于快速定位相关信息
+- Allows you to chat with uploaded documents in formats such as PDF and Word using GPT capabilities.
+- Intelligently divides the documents into smaller chunks and utilizes a powerful deep averaging network encoder to generate embeddings.
+- Performs semantic search on the content of the uploaded files, passing the most relevant embeddings to the LLM.
+- Generates precise responses, including references to the sources of the information, which increases the credibility of the responses and helps quickly locate relevant information.
 
-## 🔧功能
+## 🔧Features
 
-- 文档上传：将非结构化文档上传到 Chat-Knows 仓库。
-- 向量化：将上传的文档转化为数值向量表示。
-- 向量搜索：基于向量化的文档集合，实现高效的向量搜索和相关性排序。
-- ChatGPT 接口：通过与 ChatGPT 模型的集成，提供回答和参考文档的获取功能。
+- Document Upload: Upload unstructured documents to the Chat-Knows repository.
+- Vectorization: Convert uploaded documents into numerical vector representations.
+- Vector Search: Efficient vector search and relevance ranking based on the vectorized document collection.
+- ChatGPT Interface: Integration with the ChatGPT model to provide answer retrieval and access to reference documents.
 
-## ❓如何使用
+## ❓How to Use
 
-1. 克隆仓库：
+1. Clone the repository:
 
 ```shell
 git clone https://github.com/YidaHu/chat-knows.git
 ```
-2. 上传文档：将你的非结构化文档上传到仓库中，确保文档符合支持的格式要求。
+2. Upload Documents: Upload your unstructured documents to the repository, ensuring they meet the supported format requirements.
 
-3. 向量化和索引化：使用提供的工具和脚本对上传的文档进行向量化和索引化。
+3. Vectorization and Indexing: Use the provided tools and scripts to vectorize and index the uploaded documents.
 
-4. 启动 ChatGPT：配置 ChatGPT 模型并启动聊天接口。
+4. Start ChatGPT: Configure the ChatGPT model and launch the chat interface.
 
-5. 提问和回答：使用 ChatGPT 接口向 Chat-Knows 提问，并获取回答和相关的参考文档。
+5. Ask and Answer: Use the ChatGPT interface to ask questions to Chat-Knows and retrieve answers and related reference documents.
 
-## 🪤开发部署
+## 🪤Development and Deployment
 
-### 执行脚本体验
+### Running the Script for Testing
 
-执行 api.py 利用 fastapi 部署 API
+To experience the project, you can execute the following command to deploy the API using FastAPI
 
 ```shell
 uvicorn api:app --reload
 ```
+This will run a script named api.py and deploy the API using the FastAPI framework. The --reload flag enables automatic reloading of the application when code changes are detected.
 
-## 💡贡献
-欢迎贡献代码、报告问题以及提供改进建议！如果你想贡献代码，请先阅读贡献指南，并提交 Pull Request。如果你发现了问题或有任何建议，请提交 Issue。
+## 💡Contribution
+Contributions, issue reports, and improvement suggestions are welcome! If you wish to contribute code, please read the contribution guidelines and submit a pull request. If you find any issues or have any suggestions, please submit an issue.
 
-请确保你的贡献符合项目的行为准则，并遵守开源许可证。
-
+Please ensure that your contributions adhere to the project's code of conduct and comply with the open-source license.
