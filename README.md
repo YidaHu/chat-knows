@@ -10,7 +10,7 @@ Chat-Knows combines knowledge and information from unstructured document collect
 
 - Allows you to chat with uploaded documents in formats such as PDF and Word using GPT capabilities.
 - Intelligently divides the documents into smaller chunks and utilizes a powerful deep averaging network encoder to generate embeddings.
-- Performs semantic search on the content of the uploaded files, passing the most relevant embeddings to the LLM.
+- Performs a semantic search on the content of the uploaded files, passing the most relevant embeddings to the LLM.
 - Generates precise responses, including references to the sources of the information, which increases the credibility of the responses and helps quickly locate relevant information.
 
 ## 🔧Features
